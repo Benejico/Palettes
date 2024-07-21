@@ -17,9 +17,9 @@ const isColorLight = (hexColor) => {
 const generateRandomColor = () => 
     Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 
-const addRandomColors = (numbersOfColor) => {
+const addRandomColors = (numberOfColor) => {
     const randomColors = Array.from(
-        { length: numbersOfColor }, 
+        { length: numberOfColor }, 
         () => generateRandomColor()
     );
 
