@@ -1,6 +1,14 @@
+:root {
+    --background-color: #1f1f23;
+    --text-color: #eceff4;
+    --border-color: #5e81ac;
+    --section-background: #29292e;
+    --light-border: #d8dee9;
+}
+
 body {
-    background-color: #1f1f23;
-    color: #eceff4;
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: Courier, monospace;
 }
 
@@ -9,38 +17,45 @@ h1 {
     font-size: 30px;
 }
 
+article {
+    margin-bottom: 30px;
+}
+
 h2 {
     display: inline-block;
-
     position: relative;
     left: 10%;
     top: 10px;
     padding: 5px;
     border-radius: 5px;
-    background-color: #1f1f23;
-    outline: 1px solid #d8dee9;
+
+    background-color: var(--background-color);
+    outline: 1px solid var(--border-color);
 }
 
 section {
-    outline: 1px solid #d8dee9;
-    background: #29292e;
-    width: 90%;
+    outline: 1px solid var(--border-color);
+    background: var(--section-background);
+    width: calc(100% - 80px);
+    min-width: 90px;
     margin: 0 auto;
+    padding: 20px;
     border-radius: 10px;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .colorSquare {
-    width: 50px;
+    min-width: 50px;
     height: 50px;
     border-radius: 10px;
-    margin: 20px 10px;
-    outline: 1px solid #d8dee9;
+    outline: 1px solid var(--light-border);
 }
 
 .darkBorder {
-    outline: 1px solid #29292e;
+    outline: 1px solid var(--section-background);
 }
