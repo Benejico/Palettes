@@ -1,8 +1,13 @@
 // SECTION Utility functions
 const copyColorHex = (data) => {
-    navigator.clipboard.writeText(data)
+    let string = data;
+    if (isCtrlPressed) {
+        const rgbColors = convertHexToRGB(data);
+        string = `rgb(${rgbColors.r}, ${rgbColors.g}, ${rgbColors.b})`;
+    }
+    navigator.clipboard.writeText(string)
         .then(() => {
-            console.log(`Copied ${data} to clipboard`);
+            console.log(`Copied ${string} to clipboard`);
             blinkBorder(data, 'green');
         })
         .catch((err) => {
@@ -11,24 +16,30 @@ const copyColorHex = (data) => {
         });
 };
 
-const blinkBorder = (id, color) => {
-    document.getElementById(id).style.outline = `4px solid ${color}`;
-    setTimeout(() => {
-        document.getElementById(id).style.outline = "";
-    }, 750);
-};
-
-const isColorLight = (hexColor) => {
+const convertHexToRGB = (hexColor) => {
     const r = parseInt(hexColor.slice(0, 2), 16);
     const g = parseInt(hexColor.slice(2, 4), 16);
     const b = parseInt(hexColor.slice(4, 6), 16);
-    
+    return { r, g, b };
+}
+
+const isColorLight = (hexColor) => {
+    const { r, g, b } = convertHexToRGB(hexColor);
     const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
     return brightness > 0.80;
 };
 
 const generateRandomColor = () => 
     Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+// !SECTION
+
+// SECTION Helper functions
+const blinkBorder = (id, color) => {
+    document.getElementById(id).style.outline = `4px solid ${color}`;
+    setTimeout(() => {
+        document.getElementById(id).style.outline = "";
+    }, 750);
+};
 
 const addRandomColors = (numberOfColor) => {
     const randomColors = Array.from(
@@ -45,6 +56,23 @@ const addRandomColors = (numberOfColor) => {
     }
 };
 // !SECTION
+
+// SECTION Keypress event listener
+let isCtrlPressed = false;
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Control') {
+        isCtrlPressed = true;
+    }
+});
+
+document.addEventListener('keyup', (event) => {
+    if (event.key === 'Control') {
+        isCtrlPressed = false;
+    }
+});
+
+// !SECTION 
 
 // SECTION DOM creation functions
 const createPalette = ({ name, colorsGroup }) => `
