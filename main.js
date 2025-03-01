@@ -1,5 +1,5 @@
 // SECTION Utility functions
-const copyColorHex = (data) => {
+const copyColor = (data) => {
     let string = data;
     if (isCtrlPressed) {
         const rgbColors = convertHexToRGB(data);
