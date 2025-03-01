@@ -94,7 +94,7 @@ const createColorSquare = (color) => `
         id="${color}" 
         class="colorSquare${isColorLight(color) ? ' darkBorder' : ''}" 
         style="background-color: #${color}" 
-        onclick="copyColorHex('${color}')"
+        onclick="copyColor('${color}')"
     ></div>
 `;
 //!SECTION
