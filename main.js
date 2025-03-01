@@ -12,10 +12,10 @@ const copyColorHex = (data) => {
 };
 
 const blinkBorder = (id, color) => {
-    document.getElementById(id).style.outline = `2px solid ${color}`;
+    document.getElementById(id).style.outline = `4px solid ${color}`;
     setTimeout(() => {
         document.getElementById(id).style.outline = "";
-    }, 1000);
+    }, 750);
 };
 
 const isColorLight = (hexColor) => {
@@ -36,10 +36,13 @@ const addRandomColors = (numberOfColor) => {
         () => generateRandomColor()
     );
 
-    data[1].colorsGroup.push({
-        name: "Random",
-        colors: randomColors
-    });
+    const randomPalette = data.find(data => data.name === "Random");
+    if (randomPalette) {
+        randomPalette.colorsGroup.push({
+            name: "Random",
+            colors: randomColors
+        });
+    }
 };
 // !SECTION
 
