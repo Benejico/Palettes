@@ -1,8 +1,21 @@
 // SECTION Utility functions
 const copyColorHex = (data) => {
     navigator.clipboard.writeText(data)
-        .then(() => console.log(`Copied ${data} to clipboard`))
-        .catch((err) => console.error('Failed to copy: ', err));
+        .then(() => {
+            console.log(`Copied ${data} to clipboard`);
+            blinkBorder(data, 'green');
+        })
+        .catch((err) => {
+            console.error('Failed to copy: ', err);
+            blinkBorder(data, 'red');
+        });
+};
+
+const blinkBorder = (id, color) => {
+    document.getElementById(id).style.outline = `2px solid ${color}`;
+    setTimeout(() => {
+        document.getElementById(id).style.outline = "";
+    }, 1000);
 };
 
 const isColorLight = (hexColor) => {
@@ -31,12 +44,11 @@ const addRandomColors = (numberOfColor) => {
 // !SECTION
 
 // SECTION DOM creation functions
-const createColorSquare = (color) => `
-    <div 
-        class="colorSquare${isColorLight(color) ? ' darkBorder' : ''}" 
-        style="background-color: #${color}" 
-        onclick="copyColorHex('${color}')"
-    ></div>
+const createPalette = ({ name, colorsGroup }) => `
+    <article>
+        <h1>${name}</h1>
+        ${colorsGroup.map(createColorGroup).join('')}
+    </article>
 `;
 
 const createColorGroup = ({ name, colors }) => `
@@ -46,11 +58,13 @@ const createColorGroup = ({ name, colors }) => `
     </section>
 `;
 
-const createPalette = ({ name, colorsGroup }) => `
-    <article>
-        <h1>${name}</h1>
-        ${colorsGroup.map(createColorGroup).join('')}
-    </article>
+const createColorSquare = (color) => `
+    <div 
+        id="${color}" 
+        class="colorSquare${isColorLight(color) ? ' darkBorder' : ''}" 
+        style="background-color: #${color}" 
+        onclick="copyColorHex('${color}')"
+    ></div>
 `;
 //!SECTION
 
