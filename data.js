@@ -3,19 +3,19 @@ const data = [
         "name": "Northem",
         "colorsGroup": [
             { 
-                "name": "Blacks", 
+                "name": "Black", 
                 "colors": [ "1f1f23", "242429", "29292e", "4f4f59" ]
             },
             { 
-                "name": "Whites", 
+                "name": "White", 
                 "colors": [ "d8dee9", "eceff4" ]
             },
             { 
-                "name": "Blues", 
+                "name": "Blue", 
                 "colors": [ "8fbcbb", "88c0d0", "81a1c1", "5e81ac" ]
             },
             { 
-                "name": "Colors", 
+                "name": "Color", 
                 "colors": [ "bf616a", "d08770", "ebcb8b", "a3be8c", "b48ead" ]
             }
         ]
