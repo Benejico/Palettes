@@ -26,6 +26,34 @@ const data = [
             {
                 "name": "Rich",
                 "colors": [ "123524" ]
+            },
+            {
+                "name": " ",
+                "colors": ["576238","ffd95d","f0eadc"]
+            },
+            {
+                "name": " ",
+                "colors": ["ee6c29","282b2b","7aa6b3"]
+            },
+            {
+                "name": " ",
+                "colors": ["162660","d0e6fd","f1e4d1"]
+            },
+            {
+                "name": " ",
+                "colors": ["6d8ec5","d3622c","f0c845"]
+            },
+            {
+                "name": " ",
+                "colors": ["6f6134","e1c68f","fae7c9"]
+            },
+            {
+                "name": " ",
+                "colors": ["3d402f","fcf9d8","c99fcd"]
+            },
+            {
+                "name": " ",
+                "colors": ["69a481","e7edeb","7c1f31"]
             }
         ]
     },
